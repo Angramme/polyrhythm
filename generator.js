@@ -17,4 +17,5 @@ function generateTimings(d, time){
     timings.push(t)
     t += d
   }
+  return timings
 }
