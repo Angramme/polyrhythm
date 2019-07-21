@@ -1,11 +1,11 @@
 # polyrhythm
+*Note: This project uses Tone.js internally for sound generation*
+
 A simple opensource JavaScript polyrhythm generator.
-
-Note: This project uses Tone.js internally for sound generation
-
 To test it out, go to https://angramme.github.io/polyrhythm/.
 
 # Dummy tutorial
+SCROLL DOWN! to see the full thing :)
 Click on the numbers to change them
 This way you can select the polyrhythm that you want and the loop duration.
 Note that you have to deselect the input field for it to update.
