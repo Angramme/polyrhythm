@@ -1,6 +1,6 @@
 
 
-function getPolyrthythm(a, b, time){
+function getPolyrhythm(a, b, time){
   var dA = time / a;
   var dB = time / b;
   
