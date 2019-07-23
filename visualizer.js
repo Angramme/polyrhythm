@@ -13,7 +13,7 @@ window.addEventListener("resize", resize_can);
 function draw(time, tA, tB, barP){
 	
 	CTX.clearRect(0,0, CAN.width, CAN.height);
-	
+	/*
 	CTX.fillStyle = "yellow";
 	for(var t of tA){
 		var frac = t / time;
@@ -31,7 +31,8 @@ function draw(time, tA, tB, barP){
 			frac * CAN.width |0, 4 * 0.16666 * CAN.height |0,
 			5, 0.16666 * CAN.height |0);
 	}
+	*/
 	
 	CTX.fillStyle = "white";
-	CTX.fillRect(barP / time * CAN.width, 0, 1, CAN.height);
+	CTX.fillRect(barP * CAN.width, 0, 1, CAN.height);
 }
