@@ -8,31 +8,3 @@ function resize_can(){
 }
 resize_can();
 window.addEventListener("resize", resize_can);
-
-
-function draw(time, tA, tB, barP){
-	
-	CTX.clearRect(0,0, CAN.width, CAN.height);
-	/*
-	CTX.fillStyle = "yellow";
-	for(var t of tA){
-		var frac = t / time;
-		
-		CTX.fillRect(
-			frac * CAN.width |0, 0.16666 * CAN.height |0,
-			5, 0.16666 * CAN.height |0);
-	}
-	
-	CTX.fillStyle = "blue";
-	for(var t of tB){
-		var frac = t / time;
-		
-		CTX.fillRect(
-			frac * CAN.width |0, 4 * 0.16666 * CAN.height |0,
-			5, 0.16666 * CAN.height |0);
-	}
-	*/
-	
-	CTX.fillStyle = "white";
-	CTX.fillRect(barP * CAN.width, 0, 1, CAN.height);
-}

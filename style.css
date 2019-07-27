@@ -36,19 +36,19 @@ body{
 	font-family:"Courier New", Courier, monospace;
 }
 
-.container > input, .container > div{
+.container > input{
 	border:none;
 	
 	vertical-align:middle;
 	
 	font-size:30vh;
 	text-align:center;
-	width:30vh;
+	width:80vh;
+	max-width: 90vw;
 }
 
 input[type=text]{
 	background:#eee;
-	
 }
 
 .selectbox{
@@ -96,9 +96,8 @@ input[type=text]{
 }
 
 @media only screen and (max-aspect-ratio: 1/1){
-	.container > input, .container > div{
+	.container > input{
 		font-size:30vw;
-		width:30vw;
 	}
 	#playbtn{
 		left:25vw;

@@ -1,43 +1,44 @@
 <!doctype html>
 
 <html>
-	<head>
-    <title>open polyrhythm generator</title>
-    <link id="favicon" rel="icon" href="0.png"/>
-		<link rel="stylesheet" href="style.css"/>
-  </head>
-  
-  <body>
-		
-		<div class="selectbox">
-			<div class="infotxt">select the polyrhythm you want (and scroll down)</div>
-			<form class="container">
-				<input type="text" name="A" id="At" value="2"><br>
-				<div>:</div>
-				<input type="text" name="B" id="Bt" value="1"><br>
-			</form>
-			<button type="button" id="playbtn">PLAY!</button>
-		</div>
-		
-		<div class="resultbox">
-			<div id="temposelect">
-				<div>loop duration = </div>
-				<input type="text" name="B" id="loop-duration" value="1000"><br>
-				<div>ms</div>
-			</div>
-			<canvas id="CAN"></canvas>
-		</div>
 
-		<script src="tone.js"></script>
-		
-		<script src="generator.js"></script>
-		<script src="visualizer.js"></script>
-		
-		<script src="voice.js"></script>
-		<script src="segment.js"></script>
-		<script src="ensemble.js"></script>
-		<script src="favicon.js"></script>
-		
-		<script src="main.js"></script>
-  </body>
+<head>
+	<title>open polyrhythm generator</title>
+	<link id="favicon" rel="icon" href="0.png" />
+	<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+	<div class="selectbox">
+		<div class="infotxt">select the polyrhythm you want (and scroll down)</div>
+		<div class="container">
+			<input type="text" name="ratios" id="ratiosIN" pattern="(\d+:)+\d+" title="input integer numbers separated by :" value="1:2"><br>
+		</div>
+		<button type="button" id="playbtn">PLAY!</button>
+	</div>
+
+	<div class="resultbox">
+		<div id="temposelect">
+			<div>loop duration = </div>
+			<input type="text" name="B" id="loop-duration" value="1000"><br>
+			<div>ms</div>
+		</div>
+		<canvas id="CAN"></canvas>
+	</div>
+
+	<script src="tone.js"></script>
+
+	<script src="generator.js"></script>
+	<script src="visualizer.js"></script>
+
+	<script src="voice.js"></script>
+	<script src="segment.js"></script>
+	<script src="ensemble.js"></script>
+	<script src="synths.js"></script>
+	<script src="favicon.js"></script>
+
+	<script src="main.js"></script>
+</body>
+
 </html>
