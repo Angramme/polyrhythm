@@ -53,6 +53,12 @@ class Ensemble{
 		}
 	}
 
+	forEach(cb){
+		for(var s of this._segments){
+			cb(s);
+		}
+	}
+
 
 	_move_all_after_index(i, difference){
 		for(var j=i+1; j<this._segments.length; j++){
