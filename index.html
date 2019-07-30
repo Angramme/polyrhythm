@@ -11,33 +11,10 @@
 <body>
 	<div class="selectbox">
 		<div class="infotxt">select the polyrhythm you want (and scroll down)</div>
-		<div class="segment">
-			<input type="text" name="ratios" id="ratiosIN" pattern="(\d+:)+\d+" title="input integer numbers separated by :" value="1:2">
-		
-			<div class="time-options">
-				<table>
-					<tr>
-						<td>scale: </td>
-						<td>
-							<input type="text" name="duration" id="durIN" value="1">
-						</td>
-					</tr>
-					<tr>
-						<td>repeat: </td>
-						<td>
-							<input type="text" name="repeat" id="repeatIN" value="1">
-						</td>
-					</tr>
-					<tr>
-						<td>subdivide: </td>
-						<td>
-							<input type="text" name="repeat" id="subdivideIN" value="1:1">
-						</td>
-					</tr>
-				</table>
-			</div>
-	
+		<div id="segment-list">
+
 		</div>
+		<button type="button" id="addbtn">add a segment</button>
 		<div class="time-options" id="overral-bpm">
 			<span>overral bpm: &#9833;=</span>
 			<input type="number" name="bpm" id="bpmIN" value="120">
@@ -71,6 +48,8 @@
 	<script src="segment.js"></script>
 	<script src="ensemble.js"></script>
 	<script src="synths.js"></script>
+	
+	<script src="ui.js"></script>
 	<script src="favicon.js"></script>
 
 	<script src="main.js"></script>

@@ -22,6 +22,8 @@ class Ensemble{
 		this._length += s.looplength;
 
 		this._update_transport_loop()
+
+		return this._segments.length - 1;
 	}
 	removeSegment(i){
 		if(typeof i != "number")throw new Error("i is not a number");
@@ -53,9 +55,14 @@ class Ensemble{
 		}
 	}
 
-	forEach(cb){
-		for(var s of this._segments){
-			cb(s);
+	forEach(cb, update=false){
+		if(update){
+			for(var i=0; i<this._segments.length; i++){
+				this.updateSegment(i, cb);
+			}
+			return null;
+		}else{
+			return this._segments.map(cb);
 		}
 	}
 

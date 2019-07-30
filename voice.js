@@ -1,5 +1,5 @@
 class Voice{
-	constructor(interval, subdivide, synth){
+	constructor(interval, subdivide, synth, start, end){
 		if(!synth)throw new Error("no synth specified!")
 		this.synth = synth;
 		
@@ -8,14 +8,15 @@ class Voice{
 		this.seq.loop = false;
 		this.seq.loopEnd = '1m';
 
-		this._start = 0;
-		this._length = 1;
+		this._start = start || 0;
+		this._length = end - start || 1;
 		this._subdivide = subdivide || 1;
 		this._interval = interval || 1/4;
 		this._update_sequence();
 	}
 
 	set interval(v){
+		if(v == this._interval)return;
 		this._interval = v;
 		this._update_sequence();
 	}
@@ -24,6 +25,9 @@ class Voice{
 	}
 	
 	set subdivide(v){
+		if(v == this._subdivide)return;
+		if(typeof v != "number")throw new Error("subdivide value is not a number!");
+
 		this._subdivide = v;
 		this._update_sequence();
 	}
@@ -51,7 +55,7 @@ class Voice{
 		this.synth.triggerAttack(
 			this.synth.m_note_to_play || 'C4', 
 			Tone.Time(time).toSeconds() + 0.01, 
-			value.accent ? 1 : 0.1);
+			value.accent ? 1 : 0.3);
 	}
 	
 	dispose(){

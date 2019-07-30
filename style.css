@@ -10,7 +10,7 @@ body{
 input, button{
 	background:#eee;
 	border:0;
-	font-size:4vh;
+	font-size:3vh;
 	text-align: center;
 	font-family:"Courier New", Courier, monospace;
 }
@@ -47,7 +47,7 @@ input:focus{
 .time-options > table > tr > td > input, 
 .time-options > table > tbody > tr > td > input
 {
-	width:10vw;
+	width:10vh;
 }
 
 
@@ -68,6 +68,10 @@ input:focus{
 	font-size:5vh;
 }
 
+#segment-list{
+	width:100vw;
+}
+
 .segment{
 	width:100vw;
 	margin-top:5vh;
@@ -84,6 +88,12 @@ input:focus{
 
 	font-family: Arial, Helvetica, sans-serif;
 }
+.segment > #closebtn{
+	width:80vh;
+	max-width: 90vw;
+	display: block;
+	margin: auto;
+}
 .segment > .time-options{
 	width:80vh;
 	max-width: 90vw;
@@ -95,12 +105,19 @@ input:focus{
 
 
 
-/*overral inputs*/
+/*"overral" inputs*/
+#addbtn{
+	display: block;
+	margin:auto;
+	margin-top:10vh;
+	font-size:3vh;
+}
 #playbtn{
 	margin-top:10vh;
 	margin-bottom:10vh;
 	margin-left:40vw;
 	width:20vw;
+	font-size: 4vh;
 }
 #overral-bpm{
 	margin-top:10vh;
@@ -134,8 +151,23 @@ input:focus{
 
 /*mobile*/
 @media only screen and (max-aspect-ratio: 1/1){
-	.segment > input{
+	.segment > #ratiosIN{
 		font-size:30vw;
+	}
+	.time-options > input, 
+	.time-options > span, 
+	.time-options > table > tr > td > input, 
+	.time-options > table > tr > td,
+	.time-options > table > tbody > tr > td > input, 
+	.time-options > table > tbody > tr > td
+	{
+		font-size:6vw;
+	}
+	.time-options > input,
+	.time-options > table > tr > td > input, 
+	.time-options > table > tbody > tr > td > input
+	{
+		width:25vw;
 	}
 	#playbtn{
 		margin-left:25vw;
@@ -144,5 +176,8 @@ input:focus{
 	#CAN{
 		width:94vw;
 		margin-left:3vw;
+	}
+	.footer{
+		font-size: 3vw;
 	}
 }

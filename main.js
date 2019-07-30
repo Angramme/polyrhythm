@@ -1,6 +1,7 @@
 console.log("%c I see you there! ", "background:red; color:cyan");
 
 
+//LIBRARY THINGIES
 document.documentElement.addEventListener("mousedown", function () {
 	if (Tone.context.state !== 'running')
 		Tone.context.resume();
@@ -8,23 +9,7 @@ document.documentElement.addEventListener("mousedown", function () {
 
 
 
-const playbtn = document.getElementById("playbtn");
-playbtn.addEventListener("click", () => {
-	Tone.Transport.toggle();
-	var paused = Tone.Transport.state == "stopped";
-	playbtn.innerHTML = paused ? "PLAY!" : "PAUSE";
-});
-
-
-{ // do we have a special url?
-	var ratios = (new URL(window.location.href)).searchParams.get('ratios')
-	if(ratios){
-		document.getElementById("ratiosIN").value = ratios;
-	}
-}
-
-
-
+//SOUND
 var ens = new Ensemble([
 	CreateClickSynth(),
 	CreateHiHatSynth(),
@@ -33,6 +18,8 @@ var ens = new Ensemble([
 ]);
 
 
+
+//VISUALIZATION
 var lastT = 0;
 var totalT = 0;
 var FPScap = 61;
@@ -54,6 +41,78 @@ draw_loop();
 
 
 
+//UI
+const playbtn = document.getElementById("playbtn");
+playbtn.addEventListener("click", () => {
+	Tone.Transport.toggle();
+	var paused = Tone.Transport.state == "stopped";
+	playbtn.innerHTML = paused ? "PLAY!" : "PAUSE";
+});
+
+
+
+const segment_list_elem = document.getElementById("segment-list");
+function addSegment(canclose){
+	var seg_ens_id = null;
+
+	var [seg, dispose] = createSegment(
+		function(cache){
+			ens.updateSegment(seg_ens_id, segment=>{
+				segment.ratios = cache.ratios;
+				segment.subdivide = cache.subdivide;
+				segment.looplength = cache.scale;
+				if(cache.repeat != 1){
+					console.warn("repetition not yet implemented!");
+				}
+			});
+
+			redraw_favicon();
+		},
+		canclose ? function(){ //close
+			dispose();
+			segment_list_elem.removeChild(seg);
+			ens.removeSegment(seg_ens_id);
+		} : false,
+		{
+			ratios:"1:2",
+		}
+	);
+
+	segment_list_elem.appendChild(seg);
+	seg_ens_id = ens.addSegment([1,2])
+
+	redraw_favicon();
+}
+
+function redraw_favicon(){
+	updateDynamicFavicon(ens.forEach(s=>s.ratios.join(":")).join("-"));
+}
+
+{ // do we have a special url?
+	var ratios = (new URL(window.location.href)).searchParams.get('ratios')
+	if(ratios){
+		//document.getElementById("ratiosIN").value = ratios;
+		console.error("special url loading not implemented!");
+	}else{
+		addSegment(false);
+	}
+}
+
+document.getElementById("addbtn").addEventListener("click", e=>{
+	addSegment(true);
+});
+
+
+function changeBPM(bpm){
+	Tone.Transport.bpm.value = bpm;
+}
+document.getElementById("bpmIN").addEventListener("change", ()=>{
+	changeBPM( Number( document.getElementById("bpmIN").value ) );
+})
+
+
+
+/*
 function updateTimings() {
 	var ratios_v = document.getElementById("ratiosIN").value; //raw values, possible errors
 	const ratios_e = ratios_v.trim().split(":").map(cleanEquation); //clean equatios
@@ -70,16 +129,4 @@ function updateTimings() {
 }
 updateTimings();
 document.getElementById("ratiosIN").addEventListener("change", updateTimings);
-
-
-function changeBPM(bpm){
-	Tone.Transport.bpm.value = bpm;
-}
-document.getElementById("bpmIN").addEventListener("change", ()=>{
-	changeBPM( Number( document.getElementById("bpmIN").value ) );
-})
-
-
-function cleanEquation(str){
-	return str.replace(/\s|[^0-9*/+-]/g, '');
-}
+*/
