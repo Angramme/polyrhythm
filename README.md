@@ -22,5 +22,4 @@ What do different fields do? well:
   - PLAY! / PAUSE - play / pause
   
   # useful notes
-This way you can select the precise polyrhythm that you want.
-Note that you have to deselect the input field or press enter for it to update.
+You have to deselect an input field or press enter for it to update.
