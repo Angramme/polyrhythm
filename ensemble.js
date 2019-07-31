@@ -19,7 +19,7 @@ class Ensemble{
 		this._segments.push(s)
 		s.setLoop(this._length, len ? len + this._length : null);
 
-		this._length += s.looplength;
+		this._length += s.getWholeLength();
 
 		this._update_transport_loop()
 
@@ -29,7 +29,7 @@ class Ensemble{
 		if(typeof i != "number")throw new Error("i is not a number");
 		var seg = this._segments.splice(i, 1)[0];
 
-		var difference = -seg.looplength;
+		var difference = -seg.getWholeLength();
 
 		this._length += difference;
 		this._update_transport_loop()
@@ -41,11 +41,11 @@ class Ensemble{
 	updateSegment(i, callback){
 		var seg = this._segments[i];
 
-		var oldseglength = seg.looplength;
+		var oldseglength = seg.getWholeLength();
 
 		callback(seg);
 
-		var newseglength = seg.looplength;
+		var newseglength = seg.getWholeLength();
 		if(oldseglength != newseglength){
 			this._length = this._length - oldseglength + newseglength;
 			this._update_transport_loop();

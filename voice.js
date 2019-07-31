@@ -1,12 +1,13 @@
 class Voice{
-	constructor(interval, subdivide, synth, start, end){
+	constructor(interval, subdivide, synth, start, end, repeat){
 		if(!synth)throw new Error("no synth specified!")
 		this.synth = synth;
 		
 		this.seq = new Tone.Part(this._trigger.bind(this), []);
 		this.seq.start(0);
-		this.seq.loop = false;
-		this.seq.loopEnd = '1m';
+		this.seq.loop = repeat > 1 ? repeat : false;
+		this.seq.loopStart = mfrc(start || 0);
+		this.seq.loopEnd = mfrc(end || 1);
 
 		this._start = start || 0;
 		this._length = end - start || 1;
@@ -34,11 +35,21 @@ class Voice{
 	get subdivide(){
 		return this._subdivide;
 	}
+
+	set repeat(v){
+		if(v <= 0 || (v|0) != v)throw new Error("the value must be an int and superior to zero");
+
+		this.seq.loop = v;
+	}
+	get repeat(){
+		return this.seq.loop;
+	}
 	
 	setLoop(start=null, end=null){
 		this._start = start;
 		this._length = end - start;
-		this.seq.loopStart = mfrc(start);
+
+		this.seq.loopStart = mfrc(this._start);
 		this.seq.loopEnd = mfrc(end);
 		this._update_sequence(); // length changed
 	}

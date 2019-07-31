@@ -58,7 +58,7 @@ const createSegment = (function(){
         ratioIN.type = "text";
         ratioIN.name = "ratios";
         ratioIN.id = "ratiosIN";
-        ratioIN.title = "integer numbers separated by a colon";
+        ratioIN.title = "integer numbers separated by colons";
         ratioIN.value = "1:2";
         
         bind_elem_change(ratioIN, function(){
@@ -114,26 +114,28 @@ const createSegment = (function(){
                     inp.name = data.n;
                     inp.id = data.id;
                     inp.value = data.v;
+                    inp.title = data.n == "subdivide" ? 
+                        "Enter an integer or integers separated by colons. Each one represents a subdivision for an individual voice." : 
+                        "Enter a number representing the " + data.n + " amount.";
                     
-                    const name = data.n;
-                    if(name != "subdivide"){
-                        bind_elem_change(inp, function(){
-                            const value_e = cleanEquation(inp.value);
-                            const value_n = ( x=> x ? Number(x) : 0 )(eval(value_e));
-                            inp.value = value_e;
-                            
-                            value_cache[name] = value_n;
-                        });
-                    }else{
-                        bind_elem_change(inp, function(){
-                            const value_v = inp.value.trim().split(":");
+                    if(data.n == "subdivide"){
+                        bind_elem_change(inp, (function(){
+                            const value_v = this.value.trim().split(":");
                             const value_e = value_v.map(cleanEquation);
                             const value_n = value_e.map(eval).map(r=>r?Number(r):1);
                             
-                            inp.value = value_e.join(":");
+                            this.value = value_e.join(":");
                             
-                            value_cache[name] = value_n.length == 1 ? value_n[0] : value_n;
-                        }); 
+                            value_cache[this.name] = value_n.length == 1 ? value_n[0] : value_n;
+                        }).bind(inp)); 
+                    }else{
+                        bind_elem_change(inp, (function(){
+                            const value_e = cleanEquation(this.value);
+                            const value_n = ( x=> x ? Number(x) : 0 )(eval(value_e));
+                            this.value = value_e;
+                            
+                            value_cache[this.name] = value_n;
+                        }).bind(inp));
                     }
                 }
             }

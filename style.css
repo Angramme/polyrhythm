@@ -106,12 +106,16 @@ input:focus{
 
 
 /*"overral" inputs*/
-#addbtn{
-	display: block;
-	margin:auto;
+#addbtn-container{
+	width: 100vw;
 	margin-top:10vh;
 	font-size:3vh;
+	text-align: center;
 }
+#addbtn-container > #add-indexIN{
+	width:10vh;
+}
+
 #playbtn{
 	margin-top:10vh;
 	margin-bottom:10vh;

@@ -12,6 +12,7 @@ class Segment {
 
 		this._start = 0;
 		this._end = 1;
+		this._repeat = 1;
 	}
 
 	reset() {
@@ -46,7 +47,7 @@ class Segment {
 			}
 		} else if (l > this.voices.length) {
 			for (let i = this.voices.length; i < l; i++) {
-				this.voices.push(new Voice(null, this._get_subdivide_at(i), this.synths[i], this._start, this._end));
+				this.voices.push(new Voice(null, this._get_subdivide_at(i), this.synths[i], this._start, this._end, this._repeat));
 			}
 		}
 	}
@@ -85,9 +86,25 @@ class Segment {
 	}
 	set looplength(v){
 		if(v == this._end - this._start)return;
+		this.setLoop(this._start, this._start + v);
+	}
 
-		this._end = this._start + v;
-		this.setLoop(this._start, this._end);
+	getWholeLength(){
+		return (this._end - this._start) * this._repeat;
+	}
+
+	set repeat(v){
+		if(this._repeat == v)return;
+		if(v <= 0 || (v|0) != v)throw new Error("the value must be an int and superior to zero.");
+
+		this._repeat = v;
+
+		for(var vo of this.voices){
+			 vo.repeat = this._repeat;
+		}
+	}
+	get repeat(){
+		return this._repeat;
 	}
 
 	setLoop(start, end=null) {

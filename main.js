@@ -58,12 +58,10 @@ function addSegment(canclose){
 	var [seg, dispose] = createSegment(
 		function(cache){
 			ens.updateSegment(seg_ens_id, segment=>{
+				segment.repeat = cache.repeat;
 				segment.ratios = cache.ratios;
 				segment.subdivide = cache.subdivide;
 				segment.looplength = cache.scale;
-				if(cache.repeat != 1){
-					console.warn("repetition not yet implemented!");
-				}
 			});
 
 			redraw_favicon();
@@ -78,8 +76,8 @@ function addSegment(canclose){
 		}
 	);
 
-	segment_list_elem.appendChild(seg);
 	seg_ens_id = ens.addSegment([1,2])
+	segment_list_elem.appendChild(seg);
 
 	redraw_favicon();
 }
@@ -99,6 +97,7 @@ function redraw_favicon(){
 }
 
 document.getElementById("addbtn").addEventListener("click", e=>{
+	//var i = Number(document.getElementById("add-indexIN").value);
 	addSegment(true);
 });
 
