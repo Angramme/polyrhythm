@@ -4,60 +4,132 @@ body{
 	overflow-x:hidden;
 }
 
-.container{
-	display:flex;
-	flex-flow: row nowrap;
-	align-items:center;
-	justify-content:center;
-	
+
+
+/*inputs*/
+input, button{
+	background:#eee;
+	border:0;
+	font-size:3vh;
+	text-align: center;
+	font-family:"Courier New", Courier, monospace;
+}
+@keyframes pulsate{
+	0%{ background:#eee;}
+	50%{ background:#dfdfdf;}
+	100%{background:#eee;}
+}
+input:focus{
+	outline-color: transparent;
+	outline-style: none;
+	border:0;
+	animation-name:pulsate;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+}
+
+
+/*generic*/
+.time-options{
+	margin:auto;
+	text-align:center;
+}
+.time-options > input, 
+.time-options > span, 
+.time-options > table > tr > td > input, 
+.time-options > table > tr > td,
+.time-options > table > tbody > tr > td > input, 
+.time-options > table > tbody > tr > td
+{
+	font-size:3vh;
+}
+.time-options > input,
+.time-options > table > tr > td > input, 
+.time-options > table > tbody > tr > td > input
+{
+	width:10vh;
+}
+
+
+
+
+
+/*options box*/
+.selectbox{
 	width:100vw;
-	height:50vh;
-	margin-top:25vh;
+	position:relative;
 }
 
 .infotxt{
-	position:absolute;
-	top:8vh;
-	left:0;
+	margin-top:10vh;
+	margin-bottom: 10vh;
 	width:100vw;
 	text-align:center;
 	font-size:5vh;
 }
 
-#playbtn{
-	position:absolute;
-	bottom:8vh;
-	left:40vw;
-	width:20vw;
-	border:none;
-	font-size:4vh;
-	text-align:center;
-	
-	font-family:"Courier New", Courier, monospace;
-}
-
-.container > input, .container > div{
-	border:none;
-	
-	vertical-align:middle;
-	
-	font-size:30vh;
-	text-align:center;
-	width:30vh;
-}
-
-input[type=text]{
-	background:#eee;
-	
-}
-
-.selectbox{
-	overflow:auto;
-	height:100vh;
+#segment-list{
 	width:100vw;
-	position:relative;
 }
 
+.segment{
+	width:100vw;
+	margin-top:5vh;
+	margin-bottom:5vh;
+}
+.segment > #ratiosIN{
+	font-size:30vh;
+	width:80vh;
+	max-width: 90vw;
+
+	display:block;
+	margin:auto;
+	margin-bottom:5vh;
+
+	font-family: Arial, Helvetica, sans-serif;
+}
+.segment > #closebtn{
+	width:80vh;
+	max-width: 90vw;
+	display: block;
+	margin: auto;
+}
+.segment > .time-options{
+	width:80vh;
+	max-width: 90vw;
+	text-align: left;
+}
+.segment > .time-options > table{
+	margin:auto;
+}
+
+
+
+/*"overral" inputs*/
+#addbtn-container{
+	width: 100vw;
+	margin-top:10vh;
+	font-size:3vh;
+	text-align: center;
+}
+#addbtn-container > #add-indexIN{
+	width:10vh;
+}
+
+#playbtn{
+	margin-top:10vh;
+	margin-bottom:10vh;
+	margin-left:40vw;
+	width:20vw;
+	font-size: 4vh;
+}
+#overral-bpm{
+	margin-top:10vh;
+}
+
+
+
+/*visuallization box*/
 .resultbox{
 	overflow:auto;
 	min-height:50vh;
@@ -75,37 +147,41 @@ input[type=text]{
 	height:20vh;
 }
 
-#temposelect{
-	position:absolute;
-	top:10vh;
-	
-	display:flex;
-	flex-flow: row wrap;
-	align-items:center;
-	justify-content:center;
-	
-	width:100vw;
-	
-	font-size:4vh;
-}
-#temposelect > input{
-	border:0;
-	background:white;
-	font-size:3vh;
-	width:15vh;
+/*footer*/
+.footer{
+	padding:5vh;
 }
 
+
+/*mobile*/
 @media only screen and (max-aspect-ratio: 1/1){
-	.container > input, .container > div{
+	.segment > #ratiosIN{
 		font-size:30vw;
-		width:30vw;
+	}
+	.time-options > input, 
+	.time-options > span, 
+	.time-options > table > tr > td > input, 
+	.time-options > table > tr > td,
+	.time-options > table > tbody > tr > td > input, 
+	.time-options > table > tbody > tr > td
+	{
+		font-size:6vw;
+	}
+	.time-options > input,
+	.time-options > table > tr > td > input, 
+	.time-options > table > tbody > tr > td > input
+	{
+		width:25vw;
 	}
 	#playbtn{
-		left:25vw;
+		margin-left:25vw;
 		width:50vw;
 	}
 	#CAN{
 		width:94vw;
 		margin-left:3vw;
+	}
+	.footer{
+		font-size: 3vw;
 	}
 }

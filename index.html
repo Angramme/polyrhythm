@@ -1,36 +1,68 @@
 <!doctype html>
 
 <html>
-	<head>
-    <title>open polyrhythm generator</title>
-    <link id="favicon" rel="icon" href="0.png"/>
-		<link rel="stylesheet" href="style.css"/>
-  </head>
-  
-  <body>
-		
-		<div class="selectbox">
-			<div class="infotxt">select the polyrhythm you want (and scroll down)</div>
-			<form class="container">
-				<input type="text" name="A" id="At" value="2"><br>
-				<div>:</div>
-				<input type="text" name="B" id="Bt" value="1"><br>
-			</form>
-			<button type="button" id="playbtn">PLAY!</button>
-		</div>
-		
-		<div class="resultbox">
-			<div id="temposelect">
-				<div>loop duration = </div>
-				<input type="text" name="B" id="loop-duration" value="1000"><br>
-				<div>ms</div>
-			</div>
-			<canvas id="CAN"></canvas>
-		</div>
 
-		<script src="tone.js"></script>
-		<script src="generator.js"></script>
-		<script src="visualizer.js"></script>
-		<script src="main.js"></script>
-  </body>
+<head>
+	<title>open polyrhythm generator</title>
+	<link id="favicon" rel="icon" href="0.png" />
+	<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+	<div class="selectbox">
+		<div class="infotxt">select the polyrhythm you want (and scroll down)</div>
+		<div id="segment-list">
+
+		</div>
+		<div id="addbtn-container">
+			<button type="button" id="addbtn">add a segment</button>
+			<!--
+				<span>at:</span>
+				<input type="number" id="add-indexIN" title="index of position where you want to insert the new segment" value="-1"/>
+			-->
+		</div>
+		<div class="time-options" id="overral-bpm">
+			<span>overral bpm: &#9833;=</span>
+			<input type="number" name="bpm" id="bpmIN" value="120">
+		</div>
+		<button type="button" id="playbtn">PLAY!</button>
+	</div>
+
+	<div class="resultbox">
+		<canvas id="CAN"></canvas>
+	</div>
+
+	<div class="footer">
+		<hr/>
+		<span>
+			<i>Note: you can visit the original version of this project
+				<a href="https://angramme.github.io/polyrhythm-v1/">here</a>
+			</i>
+			<br/>
+			Started by Kacper Ozieblowski in 2019.
+			Visit 
+			<a href="https://github.com/Angramme/polyrhythm/blob/master/README.md#dummy-tutorial">our tutorial page</a>
+			for a more in-depth tutorial. You can also visit 
+			<a href="https://github.com/Angramme/polyrhythm/issues">our github page</a> 
+			for bug reports and feature requests.
+			This project is open source, that means anyone can contribute.
+		</span>
+	</div>
+
+	<script src="tone.js"></script>
+
+	<script src="generator.js"></script>
+	<script src="visualizer.js"></script>
+
+	<script src="voice.js"></script>
+	<script src="segment.js"></script>
+	<script src="ensemble.js"></script>
+	<script src="synths.js"></script>
+	
+	<script src="ui.js"></script>
+	<script src="favicon.js"></script>
+
+	<script src="main.js"></script>
+</body>
+
 </html>

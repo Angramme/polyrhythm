@@ -1,21 +1,24 @@
-
-
-function getPolyrhythm(a, b, time){
-  var dA = time / a;
-  var dB = time / b;
-  
-  return {
-    a: generateTimings(dA, time),
-    b: generateTimings(dB, time)
+function getPolyrhythm(ratios) {
+  var result = [];
+  for (var r of ratios) {
+    var d = 1 / r;
+    result.push(generateTimings(d, 1));
   }
+
+  return result;
 }
 
-function generateTimings(d, time){
+function generateTimings(d, time) {
   var timings = []
   var t = 0
-  while(t < time){
+  while (t < time) {
     timings.push(t)
     t += d
   }
   return timings
+}
+
+function mfrc(V) { //one measure fraction (192 = 1 quarter note in Tone.js)
+  // return ((Tone.Transport.PPQ * 4) * V | 0) + 'i'
+  return ((Tone.Transport._ppq * 4) * V | 0) + 'i'
 }
