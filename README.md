@@ -7,6 +7,20 @@ To test it out, go to https://angramme.github.io/polyrhythm/.
 # Dummy tutorial
 SCROLL DOWN! to see the full thing :)
 Click on the numbers to change them
-This way you can select the polyrhythm that you want and the loop duration.
-Note that you have to deselect the input field for it to update.
-Finally the hardest part, you can play and pause the loop with the "PLAY!" button and pause with "PAUSE" button that the "PLAY!" button magically transforms into.
+
+What do different fields do? well:
+  # Segment fields
+  - ratios ( the big one in the middle ) - this is where you enter you musical ratio like 3:4 or 3:4. Note that you can also enter more than two "voices", for example 3:6:4 or 3:5:7
+  - repeat - this is how many times this segment should repeat
+  - scale - this is by how much the lengths of the notes in this segments should be scaled, this is basically metric modulation in music theory.
+  - subdivide - this can be either a single integer that applies to all the voices in the segment or multiple values separated by colons (":") - these values signify how many times each note should be subdivided into shorter non-accented notes.
+  - lastly you can remove a segment by clicking on the "close x" button that is situated over the ratios field (not present on the first segment)
+  
+  # Overral fields and buttons
+  - add segment - adds a new segment, it's not called a bar because its length is not necessarily equal to one bar.
+  - overall bpm - changes the overall bpm.
+  - PLAY! / PAUSE - play / pause
+  
+  # useful notes
+This way you can select the precise polyrhythm that you want.
+Note that you have to deselect the input field or press enter for it to update.
