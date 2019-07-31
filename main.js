@@ -83,14 +83,14 @@ function addSegment(canclose){
 }
 
 function redraw_favicon(){
-	updateDynamicFavicon(ens.forEach(s=>s.ratios.join(":")).join("-"));
+	updateDynamicFavicon(ens.forEach(s=>s.ratios.join(":")).join("\n"));
 }
 
 { // do we have a special url?
 	var ratios = (new URL(window.location.href)).searchParams.get('ratios')
 	if(ratios){
-		//document.getElementById("ratiosIN").value = ratios;
-		console.error("special url loading not implemented!");
+		//ratios.split("s").map(v=>v.split("v"))
+		console.warn("special urls not implemented yet!");
 	}else{
 		addSegment(false);
 	}
@@ -109,23 +109,3 @@ document.getElementById("bpmIN").addEventListener("change", ()=>{
 	changeBPM( Number( document.getElementById("bpmIN").value ) );
 })
 
-
-
-/*
-function updateTimings() {
-	var ratios_v = document.getElementById("ratiosIN").value; //raw values, possible errors
-	const ratios_e = ratios_v.trim().split(":").map(cleanEquation); //clean equatios
-	const ratios_n = ratios_e.map(eval).map(v=>v?Number(v):0); //equation results
-	
-	document.getElementById("ratiosIN").value = ratios_e.join(":");
-	
-	//update sequence
-	ens.removeAll();
-	ens.addSegment(ratios_n, 1);
-	
-	//update icon
-	updateDynamicFavicon(ratios_n.join(":"));
-}
-updateTimings();
-document.getElementById("ratiosIN").addEventListener("change", updateTimings);
-*/
