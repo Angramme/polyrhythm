@@ -70,7 +70,7 @@ class Ensemble{
 	_move_all_after_index(i, difference){
 		for(var j=i+1; j<this._segments.length; j++){
 			var s = this._segments[j]
-			s.setLoop(s._start + difference, null); // move them
+			s.setLoop(s._start + difference, null); // move them by difference
 		}
 	}
 	_update_transport_loop(){
