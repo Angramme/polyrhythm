@@ -11,9 +11,9 @@ const CreateClickSynth = function(){
             modulationFrequency: 0.2
         },
         envelope: {
-            attack: 0.01,
+            attack: 0,
             decay: 0.1,
-            sustain: 0.01,
+            sustain: 0,
             release: 0.1,
         }  
     }), 440, 0.2).toMaster();
