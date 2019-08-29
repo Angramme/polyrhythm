@@ -55,18 +55,19 @@ class Voice{
 	}
 	
 	_trigger(time, value){
-		// this.synth.triggerAttackRelease(
-		// 	this.synth.m_note_to_play || 'C4', 
-		// 	this.synth.m_duration_to_play || 0.01, // m_note_to_play and m_duration_to_play is bound in synths.js
-		// 	time, 
-		// 	value.accent ? 1 : 0.1); 
-		// 
-		this.synth.triggerRelease(time);
-
-		this.synth.triggerAttack(
+		this.synth.triggerAttackRelease(
 			this.synth.m_note_to_play || 'C4', 
-			Tone.Time(time).toSeconds() + 0.01, 
-			value.accent ? 1 : 0.3);
+			this.synth.m_duration_to_play || 0.01, // m_note_to_play and m_duration_to_play is bound in synths.js
+			time, 
+			value.accent ? 1 : 0.1); 
+		
+
+		// this.synth.triggerRelease(time);
+
+		// this.synth.triggerAttack(
+		// 	this.synth.m_note_to_play || 'C4', 
+		// 	Tone.Time(time).toSeconds() + 0.01, 
+		// 	value.accent ? 1 : 0.3);
 	}
 	
 	dispose(){
