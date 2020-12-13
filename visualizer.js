@@ -56,7 +56,7 @@ function draw_beats(interval, subdivide, repeat, x, y, W){
 	W = W || CAN.width;
 	var d = W * interval / subdivide;
 
-	var n = W / d |0;
+	var n = Math.ceil(W / d);
 	var N = n * repeat;
 
 	var hh = CAN.height * 0.05 |0;
