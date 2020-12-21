@@ -2,7 +2,7 @@
 *Note: This project uses Tone.js internally for sound generation*
 
 A simple opensource JavaScript polyrhythm generator.
-To test it out, go to https://angramme.github.io/polyrhythm/.
+To test it out, go to [polyrhythm](https://angramme.github.io/polyrhythm/).
 
 # Dummy tutorial
 SCROLL DOWN! to see the full thing :)
