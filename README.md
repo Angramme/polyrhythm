@@ -16,7 +16,7 @@ What do different fields do? well:
   - subdivide - this can be either a single integer that applies to all the voices in the segment or multiple values separated by colons (":") - these values signify how many times each note should be subdivided into shorter non-accented notes.
   - lastly you can remove a segment by clicking on the "close x" button that is situated over the ratios field (not present on the first segment)
   
-  # Overral fields and buttons
+  # Overall fields and buttons
   - add segment - adds a new segment, it's not called a bar because its length is not necessarily equal to one bar.
   - overall bpm - changes the overall bpm.
   - PLAY! / PAUSE - play / pause
