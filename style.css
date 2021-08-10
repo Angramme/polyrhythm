@@ -185,3 +185,8 @@ input:focus{
 		font-size: 3vw;
 	}
 }
+
+.topbar{
+	padding: 1em;
+	background: yellow;
+}
